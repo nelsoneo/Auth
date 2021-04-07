@@ -1,14 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import firebase from 'firebase';
+import { Header } from './src/components/common';
+import LoginForm from './src/components/LoginForm';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+class App extends Component {
+  componentDidMount() {
+    firebase.initializeApp({
+        apiKey: 'AIzaSyCi8wsnyX_P7DTymbvEI7cx_TBYp1nUMvM',
+        authDomain: 'authentication-authreactnative.firebaseapp.com',
+        projectId: 'authentication-authreactnative',
+        storageBucket: 'authentication-authreactnative.appspot.com',
+        messagingSenderId: '603734192973',
+        appId: '1:603734192973:web:59cb20378a880b8b0d7d04',
+        measurementId: 'G-P5MLD5JP01'
+    });
+  }
+  
+
+  render() {
+    return (
+      <View >
+        <Header headText= 'Authentication' />
+          <LoginForm />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -19,3 +37,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
